@@ -23,7 +23,7 @@ public class DatabaseCon : MonoBehaviour {
 	void Start ()
 	{
 		DontDestroyOnLoad (this.gameObject);
-		conString = "Server=localhost;Database=wordwar;Uid=root;Pwd=;Pooling=";
+		conString = "Server=localhost;Database=wordwars;Uid=root;Pwd=;Pooling=";
 		if (pooling) {
 			conString += "true;";
 		} else {
