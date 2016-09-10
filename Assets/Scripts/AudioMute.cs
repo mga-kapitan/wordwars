@@ -4,24 +4,18 @@ using UnityEngine.UI;
 
 public class AudioMute : MonoBehaviour {
 
-	private GameObject theButton;
+//	private GameObject theButton;
 	private ColorBlock theColor;
 	bool isMute;
-	bool isClicked = true;
 
 	void Start ()
 	{
-		theButton = GameObject.Find ("btnSound");
+		//theButton = GameObject.Find ("btnSound");
 	}
 
 	public void Mute ()
 	{
 		isMute = !isMute;
 			AudioListener.volume =  isMute ? 0 : 1;
-	}
-
-	public void CChange()
-	{
-		
 	}
 }
