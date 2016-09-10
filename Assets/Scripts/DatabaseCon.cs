@@ -15,8 +15,8 @@ public class DatabaseCon : MonoBehaviour {
 
 	private string conString;
 	private MySqlConnection con = null;
-	private MySqlCommand cmd = null;
-	private MySqlDataReader dr = null;
+	//private MySqlCommand cmd = null;
+	//private MySqlDataReader dr = null;
 
 	private MD5 _md5Hash;
 
