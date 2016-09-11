@@ -10,26 +10,28 @@ using System.Text;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 
-public class Login : MonoBehaviour {
+public class UserReg : MonoBehaviour {
 
 	private MySqlConnection connection = new MySqlConnection();
 	private MySqlCommand cmd;
 	private MySqlDataReader mdr;
 	string query;
-	string user, pass;
-	GameObject userGo, passGo;
-	InputField userCo, passCo;
+	string user, pass, conPass;
+	GameObject userGo, passGo, conPassGo;
+	InputField userCo, passCo, conPassCo;
 
-
-	public void SceneLoad (string scene)
+	public void userSubmit (string scene)
 	{
 		connection.ConnectionString = "Server=localhost;Database=wordwars;Uid=root;Pwd=;Pooling=";
-		userGo = GameObject.Find ("inputUsername");
+		userGo = GameObject.Find ("regUser");
 		userCo = userGo.GetComponent<InputField> ();
 		user = userCo.text;
-		passGo = GameObject.Find ("inputPassword");
+		passGo = GameObject.Find ("regPass");
 		passCo = passGo.GetComponent<InputField> ();
 		pass = passCo.text;
+		conPassGo = GameObject.Find ("regPass");
+		conPassCo = conPassGo.GetComponent<InputField> ();
+		conPass = conPassCo.text;
 
 		Debug.Log (user);
 		Debug.Log (pass);
@@ -38,28 +40,16 @@ public class Login : MonoBehaviour {
 		{
 			connection.Open();
 
-			query = "select * from account where Usrnm = '" + user + "' and Psswrd = '" + pass + "'";
-			cmd = new MySqlCommand(query, connection);
-			mdr = cmd.ExecuteReader();
-
-			int count = 0;
-
-			while (mdr.Read())
+			if (pass == conPass)
 			{
-				count++;
-
-				if (count == 1)
-				{
-					SceneManager.LoadScene(scene);
-				}
+				query = "INSERT INTO account (Usrnm, Psswrd) VALUES ('"+userCo.text+"','"+passCo.text+"')";
+				cmd = new MySqlCommand (query, connection);
+				cmd.ExecuteNonQuery();
+				Debug.Log("Registered Succesfully!");
+				SceneManager.LoadScene(scene);
 			}
-
-			if (count != 1)
-			{
-				EditorUtility.DisplayDialog("","Incorrect username or password.","Ok");
-			}
-
-		}catch (Exception q)
+		}
+		catch (Exception q)
 		{
 			Debug.Log (q);
 		}
