@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
@@ -56,7 +58,7 @@ public class Login : MonoBehaviour {
 
 			if (count != 1)
 			{
-				EditorUtility.DisplayDialog("","Incorrect username or password.","Ok");
+			//	EditorUtility.DisplayDialog("","Incorrect username or password.","Ok");
 			}
 
 		}catch (Exception q)
