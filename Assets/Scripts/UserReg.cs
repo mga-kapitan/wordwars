@@ -18,9 +18,9 @@ public class UserReg : MonoBehaviour {
 	private MySqlCommand cmd;
 	private MySqlDataReader mdr;
 	string query;
-	string user, pass, conPass;
-	GameObject userGo, passGo, conPassGo;
-	InputField userCo, passCo, conPassCo;
+	string user, dispname, pass, conPass;
+	GameObject userGo, passGo, userDispGo, conPassGo;
+	InputField userCo, passCo, userDispCo, conPassCo;
 
 	public void userSubmit (string scene)
 	{
@@ -28,36 +28,43 @@ public class UserReg : MonoBehaviour {
 		userGo = GameObject.Find ("regUser");
 		userCo = userGo.GetComponent<InputField> ();
 		user = userCo.text;
+
+		userDispGo = GameObject.Find ("regDispName");
+		userDispCo = userDispGo.GetComponent<InputField> ();
+		dispname = userDispCo.text;
+
+
 		passGo = GameObject.Find ("regPass");
 		passCo = passGo.GetComponent<InputField> ();
 		pass = passCo.text;
+
 		conPassGo = GameObject.Find ("regPass");
 		conPassCo = conPassGo.GetComponent<InputField> ();
 		conPass = conPassCo.text;
 
 		Debug.Log (user);
 		Debug.Log (pass);
-
-		try
-		{
-			connection.Open();
-
-			if (pass == conPass)
+			try
 			{
-				query = "INSERT INTO account (Usrnm, Psswrd) VALUES ('"+userCo.text+"','"+passCo.text+"')";
-				cmd = new MySqlCommand (query, connection);
-				cmd.ExecuteNonQuery();
-				Debug.Log("Registered Succesfully!");
-				SceneManager.LoadScene("CharSelect");
+				connection.Open();
+				if (pass == conPass)
+				{
+					query = "INSERT INTO account (Usrnm, Psswrd, dispname) VALUES ('"+user+"','"+pass+"','"+dispname+"')";
+					cmd = new MySqlCommand (query, connection);
+					cmd.ExecuteNonQuery();
+					Debug.Log("Registered Succesfully!");
+					SceneManager.LoadScene("CharSelect");
+			}else{
+				Debug.Log("Invalid Input");
+			}
+			}
+			catch (Exception q)
+			{
+				Debug.Log (q);
+			}
+			finally
+			{
+				connection.Close();
 			}
 		}
-		catch (Exception q)
-		{
-			Debug.Log (q);
-		}
-		finally
-		{
-			connection.Close();
-		}
-	}
 }
