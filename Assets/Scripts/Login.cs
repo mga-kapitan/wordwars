@@ -70,8 +70,15 @@ public class Login : MonoBehaviour {
 			connection.Close();
 		}
 	}
+
 	public void RegisterLoad (string scene)
 	{
 		SceneManager.LoadScene (scene);
+	}
+
+	void Update(){
+		if(Input.GetKeyDown(KeyCode.Escape)){
+			Application.Quit ();
+		}
 	}
 }
