@@ -48,7 +48,7 @@ public class UserReg : MonoBehaviour {
 				cmd = new MySqlCommand (query, connection);
 				cmd.ExecuteNonQuery();
 				Debug.Log("Registered Succesfully!");
-				SceneManager.LoadScene(scene);
+				SceneManager.LoadScene("CharSelect");
 			}
 		}
 		catch (Exception q)
