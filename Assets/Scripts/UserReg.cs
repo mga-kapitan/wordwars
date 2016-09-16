@@ -13,7 +13,7 @@ using MySql.Data;
 using MySql.Data.MySqlClient;
 
 public class UserReg : MonoBehaviour {
-	//Database Config Variables
+	//Database Config VariablesM
 	private MySqlConnection connection = new MySqlConnection("Server=localhost;Database=wordwars;Uid=root;Pwd=;Pooling=");
 	private MySqlCommand cmd;
 	string query;
@@ -68,6 +68,11 @@ public class UserReg : MonoBehaviour {
 			}
 		}
 	public void CharSelect(string scene){
+		/*
+		 *  Boolean Avatar Selection
+		 * 1 = Male Avatar
+		 * 2 = Female Avatar
+		 */
 		try{
 			connection.Open ();
 			query = "UPDATE account SET avatar=1 where Usrnm='"+user+"'";
