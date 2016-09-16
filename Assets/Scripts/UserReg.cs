@@ -13,18 +13,18 @@ using MySql.Data;
 using MySql.Data.MySqlClient;
 
 public class UserReg : MonoBehaviour {
-
-	private MySqlConnection connection = new MySqlConnection();
+	//Database Config Variables
+	private MySqlConnection connection = new MySqlConnection("Server=localhost;Database=wordwars;Uid=root;Pwd=;Pooling=");
 	private MySqlCommand cmd;
-	private MySqlDataReader mdr;
 	string query;
-	string user, dispname, pass, conPass;
+	public 
+
+	static string user, dispname, pass, conPass;
 	GameObject userGo, passGo, userDispGo, conPassGo;
 	InputField userCo, passCo, userDispCo, conPassCo;
 
 	public void userSubmit (string scene)
 	{
-		connection.ConnectionString = "Server=localhost;Database=wordwars;Uid=root;Pwd=;Pooling=";
 		userGo = GameObject.Find ("regUser");
 		userCo = userGo.GetComponent<InputField> ();
 		user = userCo.text;
@@ -67,4 +67,17 @@ public class UserReg : MonoBehaviour {
 				connection.Close();
 			}
 		}
+	public void CharSelect(string scene){
+		try{
+			connection.Open ();
+			query = "UPDATE account SET avatar=1 where Usrnm='"+user+"'";
+			cmd = new MySqlCommand(query,connection);
+			cmd.ExecuteNonQuery();
+			Debug.Log(query);
+		}catch(Exception q){
+			Debug.Log (q);
+		}finally{
+			connection.Close ();
+		}
+	}
 }
