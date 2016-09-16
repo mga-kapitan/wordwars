@@ -67,13 +67,22 @@ public class UserReg : MonoBehaviour {
 				connection.Close();
 			}
 		}
-	public void CharSelect(string scene){
-		/*
+
+	/*
 		 *  Boolean Avatar Selection
 		 * 1 = Male Avatar
 		 * 2 = Female Avatar
 		 */
-		try{
+
+	public void BoySelect(string scene){
+		Debug.Log ("Male char selected");
+
+	}
+	public void GirlSelect(string scene){
+		Debug.Log ("Female Char Selected");
+	}
+	/*
+	 * 		try{
 			connection.Open ();
 			query = "UPDATE account SET avatar=1 where Usrnm='"+user+"'";
 			cmd = new MySqlCommand(query,connection);
@@ -84,5 +93,5 @@ public class UserReg : MonoBehaviour {
 		}finally{
 			connection.Close ();
 		}
-	}
+	*/
 }
