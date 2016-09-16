@@ -75,23 +75,33 @@ public class UserReg : MonoBehaviour {
 		 */
 
 	public void BoySelect(string scene){
-		Debug.Log ("Male char selected");
-
-	}
-	public void GirlSelect(string scene){
-		Debug.Log ("Female Char Selected");
-	}
-	/*
-	 * 		try{
+		try{
 			connection.Open ();
 			query = "UPDATE account SET avatar=1 where Usrnm='"+user+"'";
 			cmd = new MySqlCommand(query,connection);
 			cmd.ExecuteNonQuery();
 			Debug.Log(query);
+			Debug.Log ("Male char selected");
 		}catch(Exception q){
 			Debug.Log (q);
 		}finally{
 			connection.Close ();
 		}
-	*/
+
+	}
+	public void GirlSelect(string scene){
+		try{
+			connection.Open ();
+			query = "UPDATE account SET avatar=2 where Usrnm='"+user+"'";
+			cmd = new MySqlCommand(query,connection);
+			cmd.ExecuteNonQuery();
+			Debug.Log(query);
+			Debug.Log ("Female character selected");
+		}catch(Exception q){
+			Debug.Log (q);
+		}finally{
+			connection.Close ();
+		}
+	}
+
 }
