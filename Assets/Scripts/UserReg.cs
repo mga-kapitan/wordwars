@@ -82,6 +82,7 @@ public class UserReg : MonoBehaviour {
 			cmd.ExecuteNonQuery();
 			Debug.Log(query);
 			Debug.Log ("Male char selected");
+			SceneManager.LoadScene("MainMenu");
 		}catch(Exception q){
 			Debug.Log (q);
 		}finally{
@@ -89,6 +90,7 @@ public class UserReg : MonoBehaviour {
 		}
 
 	}
+
 	public void GirlSelect(string scene){
 		try{
 			connection.Open ();
@@ -97,11 +99,11 @@ public class UserReg : MonoBehaviour {
 			cmd.ExecuteNonQuery();
 			Debug.Log(query);
 			Debug.Log ("Female character selected");
+			SceneManager.LoadScene("MainMenu");
 		}catch(Exception q){
 			Debug.Log (q);
 		}finally{
 			connection.Close ();
 		}
 	}
-
 }
