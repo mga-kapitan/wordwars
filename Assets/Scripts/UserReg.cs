@@ -69,7 +69,7 @@ public class UserReg : MonoBehaviour {
 		}
 
 	/*
-		 *  Boolean Avatar Selection
+		 *  Avatar Code Selection
 		 * 1 = Male Avatar
 		 * 2 = Female Avatar
 		 */
