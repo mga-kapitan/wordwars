@@ -23,7 +23,7 @@ public class Login : MonoBehaviour {
 	InputField userCo, passCo;
 
 
-	public void SceneLoad (string scene)
+	public void LoginSceneLoad (string scene)
 	{
 		connection.ConnectionString = "Server=localhost;Database=wordwars;Uid=root;Pwd=;Pooling=";
 		userGo = GameObject.Find ("inputUsername");
@@ -68,6 +68,17 @@ public class Login : MonoBehaviour {
 		finally
 		{
 			connection.Close();
+		}
+	}
+
+	public void RegisterLoad (string scene)
+	{
+		SceneManager.LoadScene (scene);
+	}
+
+	void Update(){
+		if(Input.GetKeyDown(KeyCode.Escape)){
+			Application.Quit ();
 		}
 	}
 }
